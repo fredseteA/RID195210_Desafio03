@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Ajuste global da página */
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-size: 10px;
+    font-family: sans-serif;
+    background-color: #F5F5F5; /* Fundo mais próximo ao protótipo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+h1{
+    font-size: 3.2rem;
+    margin: 0 0 1.6rem;
+    color: #11175E;
+}
+main{
+    width: 100%;
+    max-width: 34rem;
+    background-color: #fff;
+    border-radius: 1.6rem;
+    padding: 2.4rem 1.6rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Efeito de sombra sutil */
+}
+input{
+    font-size: 1.6rem;
+    border: solid 0.1rem #EEEEEE;
+    padding: 1.6rem 2.4rem;
+    width: 100%;
+    margin-bottom: 1.6rem ;
+    border-radius: .4rem;
+}
+button{
+    padding: 1.25rem 0;
+    background-color: #2D70FD;
+    color: #FFFFFF;
+    border: none;
+    border-radius: .4rem;
+    font-weight: bold;
+    cursor: pointer;
+   
+    &:hover{
+        opacity: .8;
+        transform: translateY(-.1rem);
+        transition-duration: .5s;
+    }
+}
+.create-task-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.task-btn{
+    width: 100%;  
+    font-size: 2rem;
+}
+
+
+
+
+.task-item {
+    background-color: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: .8rem;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;/* Permite posicionar elementos internos */
+}
+
+
+.task-actions {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: space-between; /* Para espaçar corretamente */
+    gap: 1rem; /* Espaçamento entre os elementos */
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+.task-text {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+}
+
+
+
+
+.task-date {
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+
+
+
+.task-tag {
+    font-size: 1.2rem;
+    background-color: #e0e0e0;
+    padding: .3rem .8rem;
+    border-radius: 1.2rem;
+    color: #666;
+    margin: 1rem 0;
+}
+
+
+.check-icon,
+.complete-btn {
+    align-self: flex-end;
+    padding: .8rem 1.6rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+
+
+
+/* Estiliza a tarefa quando for concluída */
+.task-completed {
+    color: gray;
+    text-decoration: line-through;
+}
+
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#done-tasks-footer{
+    margin-top: 2rem;
+}
+
+#done-tasks-counter{
+    color: #B1BACB;
+}
+
+
+.remove-done-tasks-btn{
+    font-size: 1rem;
+    padding: 1rem 1rem;
+}
+
+
+.check-icon{
+    display: flex !important;
+    justify-content: flex-end !important;
+    font-size: 3rem;
+    border-radius: 1rem;
+}
+
+
+@media only screen and (min-width: 1023px){
+    main {
+        width: 100vw;
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    .create-task-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #create-todo-form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #create-todo-form input,
+    #create-todo-form button {
+        margin-bottom: 0;
+        width: auto;
+        flex: 1;
+    }
+
+    #create-todo-form button {
+        flex: 0 0 auto; /* botão não cresce demais */
+        padding: 1.6rem 2.4rem;
+    }
+}

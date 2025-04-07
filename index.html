@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   
+    <title>Document</title>
+</head>
+<body>
+    <h1>Board de Tarefas</h1>
+    <main>
+        <section class="create-task-section">
+            <form id="create-todo-form">
+               
+                <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    class="input-class"
+                    placeholder="Nome da tarefa"
+                >
+               
+                <input
+                    type="text"
+                    name="label"
+                    id="label"
+                    class="input-class"
+                    placeholder="Ex:BackEnd, FrontEnd..."
+                >
+                <button type="submit" class="task-btn" aria-label="Adicionar Tarefa">+</button>
+            </form>
+        </section>
+
+
+
+
+        <section class="task-list-section">
+            <ul id="todo-list"></ul>
+        </section>
+        <footer id="done-tasks-footer">
+            <button onclick="removeDoneTasks()" class="remove-done-tasks-btn">
+                Remove done tasks
+            </button>
+            <p id="done-tasks-counter"></p>
+        </footer>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
