@@ -1,43 +1,53 @@
+//arrow function responsavel por pegar tasks do local storage, ou criar um objeto vazio caso nao tenha tasks
 const getTasksFromLocalStorage = () =>{
-    //cria uma constante que pega as tasks do localStorage
+    //crio a constante que pega as tasks caso aja alguma
     const localTasks = window.localStorage.getItem('tasks');
 
-    //se nao houver tarefas salvas, cria uma array vazia
+    //caso nao aja tarefas ele cria um string e coloca no localStorage
     if(!localTasks){
-        window.localStorage.setItem('tasks', JSON.stringify([]));
-        return [];
+        window.localStorage.setItem('tasks', JSON.stringify([]))
     }
 
+    //tentativa de conversão da string para objeto
     try{
-        return JSON.parse(localTasks); //converte os colchetes em array
+        return JSON.parse(localTasks);
     }
+    //caso aja erro, mostra a mensagem na tela e tenta novamente
     catch{
-        console.error("Erro ao converter string em array", error);
-        //tenta novamente
+        console.error("Erro ao converter localTasks", error);
         window.localStorage.setItem('tasks', JSON.stringify([]));
         return [];
     }
 }
 
-const setTasksOnLocalStorage = (tasks)=>{
+//coloca as tasks no localStorage sob a chave 'tasks'
+const setTasksOnLocalStorage = (tasks)=> {
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-const updatedTasksCounter = () => {
+//arrow function responsavel por atualizar o contador de tarefas concluidas
+const updatedTasksCounter = () =>{
+    //constante tasks para pegar as tasks do localStorage
     const tasks = getTasksFromLocalStorage();
+    //constante para filtrar as tarefas marcadas como concluidas
     const doneTasks = tasks.filter(tasks => tasks.checked).length;
-    document.getElementById('done-tasks-counter').textContent=`${doneTasks} tarefa(s) concluída(s)`;
+    //modificando o texto com a variavel doneTasks
+    document.getElementById('done-tasks-counter').textContent = `${doneTasks} tarefa(s) concluída(s)`;
 }
 
+//arrow function responsavel por remover as tarefas concluidas com o botão
 const removeDoneTasks = () => {
+    //constante que armazena as tarefas do localStorage
     const tasks = getTasksFromLocalStorage();
     // Identifica as tarefas concluídas e armazena os IDs
     const tasksToRemove = tasks
+        //filtra as tarefas consluidas
         .filter(({ checked }) => checked)
+        //pega apenas o id de cada uma delas
         .map(({ id }) => id);
 
     // Mantém apenas as tarefas não concluídas
-    const updatedTasks = tasks.filter(({ checked }) => !checked);
+    const updatedTasks = tasks.filter(({checked})=>!checked);
     setTasksOnLocalStorage(updatedTasks);
 
     // Remove cada tarefa concluída do DOM
